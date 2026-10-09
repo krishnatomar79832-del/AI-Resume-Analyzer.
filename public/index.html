@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLens AI - Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">CareerLens <span>AI</span></div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <p class="eyebrow">AI-POWERED CAREER PLATFORM</p>
+            <h1>Turn your resume into a <br><span class="highlight">career roadmap.</span></h1>
+            <p class="subtitle">Analyze ATS compatibility, discover skill gaps, match job roles and get an actionable learning roadmap.</p>
+            <a href="#analyzer-section" class="btn-primary" style="display: inline-block; text-decoration: none; margin-top: 10px;">Analyze Resume &rarr;</a>
+        </header>
+
+        <!-- Main Form Section -->
+        <section id="analyzer-section">
+            <h2 class="section-title">Resume Analyzer</h2>
+            <p class="section-subtitle">Upload your resume or paste the text. Add a job description for targeted matching.</p>
+            
+            <div class="card form-card">
+                <!-- File Upload -->
+                <div class="input-group">
+                    <label>Resume file</label>
+                    <p class="help-text">PDF, DOCX or TXT - max 8 MB</p>
+                    <div class="file-upload-box">
+                        <input type="file" id="resumeFile" accept=".txt,.pdf,.docx" style="display: none;">
+                        <button class="btn-secondary" id="uploadBtn" type="button">Choose file</button>
+                        <span class="file-name" id="fileName">No file chosen</span>
+                    </div>
+                </div>
+
+                <div class="divider">OR PASTE RESUME</div>
+
+                <!-- Textarea -->
+                <div class="input-group">
+                    <textarea id="resumeText" placeholder="Paste your complete resume here..."></textarea>
+                </div>
+
+                <!-- Target Role -->
+                <div class="input-group">
+                    <label>Target role</label>
+                    <input type="text" class="text-input" placeholder="e.g. Full Stack Developer">
+                </div>
+
+                <!-- Job Description -->
+                <div class="input-group">
+                    <label>Job description</label>
+                    <p class="help-text">optional</p>
+                    <textarea id="jobDescription" placeholder="Paste key requirements or full JD" style="height: 100px;"></textarea>
+                </div>
+
+                <div id="errorBox" class="error-box hidden"></div>
+
+                <button id="analyzeBtn" class="btn-primary" style="width: auto;">Run AI Analysis</button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading-state hidden">
+            <div class="sparkle-icon">✨</div>
+            <h3>Analyzing your resume</h3>
+            <p>Please wait while our AI models process your data.</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsBox" class="results-section hidden">
+            <div class="card score-card">
+                <div class="score-display">
+                    <span class="score-number" id="score">0</span><span class="score-total">/100</span>
+                </div>
+                <div>
+                    <h3 style="color: white; margin-bottom: 5px;">ATS compatibility</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">AI-powered resume insights</p>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 20px;">
+                <div class="card feature-card">
+                    <h3 style="color: #4ade80;">✅ Key Strengths</h3>
+                    <ul id="strengths" class="result-list"></ul>
+                </div>
+                <div class="card feature-card">
+                    <h3 style="color: #f87171;">⚠️ Skill Gaps</h3>
+                    <ul id="weaknesses" class="result-list"></ul>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 20px;">
+                <div class="card feature-card">
+                    <h3 style="color: #60a5fa;">💼 Recommended Roles</h3>
+                    <div id="recommendedJobs" class="tags-container" style="margin-top: 15px;"></div>
+                </div>
+                <div class="card feature-card">
+                    <h3 style="color: #fbbf24;">🔍 Missing Keywords</h3>
+                    <div id="missingSkills" class="tags-container" style="margin-top: 15px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <p class="eyebrow">02 - FEATURES</p>
+            <h2 class="section-title" style="margin-bottom: 30px;">Built for placement <br>preparation</h2>
+            <div class="grid-2">
+                <div class="card feature-card">
+                    <h3>ATS Score</h3>
+                    <p>Understand how well your resume matches recruiter screening systems.</p>
+                </div>
+                <div class="card feature-card">
+                    <h3>Skill Gap</h3>
+                    <p>Find missing technical skills and keywords for your target role.</p>
+                </div>
+                <div class="card feature-card">
+                    <h3>Career Roadmap</h3>
+                    <p>Get a practical sequence of skills to learn next.</p>
+                </div>
+                <div class="card feature-card">
+                    <h3>Interview Prep</h3>
+                    <p>Use the analyzed role and skills as the foundation for future interview modules.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <p class="eyebrow">03 - HISTORY</p>
+            <h2 class="section-title" style="margin-bottom: 20px;">Previous analyses</h2>
+            <div class="card history-card">
+                <div>
+                    <h3>General analysis</h3>
+                    <p>Pasted resume · Just now</p>
+                </div>
+                <div class="history-score">- / 100</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            CareerLens AI · B.Tech CSE Final Year Project
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
